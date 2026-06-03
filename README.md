@@ -22,7 +22,7 @@ Not a quarterly planning tool. Not an HR system. Built for the operational momen
 
 Staffing a consulting engagement today means opening three spreadsheets, sending four Slack messages, and spending a day building a matrix by hand based on CVs and personal memory. The people best positioned to answer "who fits this project?" are the ones too busy to do the analysis.
 
-This prototype surfaces a ranked, AI-reasoned staffing recommendation — with fit scores, skill coverage, and a downloadable PM report — from a single plain-English problem description.
+This prototype surfaces a ranked, AI-reasoned staffing recommendation — with fit scores, skill coverage, and a downloadable resource report — from a single plain-English problem description.
 
 ---
 
@@ -43,7 +43,7 @@ Scoring engine ranks consultants by fit (80% skill match, 20% availability)
         ↓
 FastAPI streams progress via SSE → Streamlit renders in real time
         ↓
-Downloadable .docx PM report with task matrix and resource recommendations
+Downloadable .docx resource report with task matrix and resource recommendations
 ```
 
 ---
@@ -60,7 +60,7 @@ Downloadable .docx PM report with task matrix and resource recommendations
 | **Editable steps** | Edit, add, or delete workstream steps and regenerate resource matching without re-running the full pipeline |
 | **Prompt cache** | Repeated queries return instantly from local JSON cache |
 | **History sidebar** | All past queries searchable, previewable, and reloadable |
-| **PM report (.docx)** | Downloadable report with original query, executive summary, project breakdown, task recommendations, and risk flags |
+| **resource report (.docx)** | Downloadable report with original query, executive summary, project breakdown, task recommendations, and risk flags |
 | **Stop button** | Cancel a running pipeline at any point |
 
 ---
@@ -250,16 +250,16 @@ All section headings and labels translate to the selected language (9 languages 
 - Availability-weighted fit scoring
 - Multilingual output (9 languages) with English-only matching pipeline
 - Editable workstream steps with targeted re-scoring
-- Downloadable PM report (.docx)
+- Downloadable resource report (.docx)
 - Local prompt cache for instant repeat queries
 - TESTING mode (full UI, no API keys required)
+- **Human-in-the-loop feedback** — users can edit, add, or delete workstream steps and regenerate resource matching without re-running the full pipeline
 
 ### Intentionally Out of Scope
 
 - **No staffing decisions** — the tool surfaces a shortlist; humans approve
 - **No ERP/HR integration** — reads from Excel, writes nowhere
 - **No utilization forecasting** — tactical staffing only, not strategic planning
-- **No feedback loop** — outcomes do not feed back into the model
 - **No skill validation** — takes profile data at face value
 - **No authentication** — single-user local tool
 
