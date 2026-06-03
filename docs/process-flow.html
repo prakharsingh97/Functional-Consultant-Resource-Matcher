@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resource Matcher Process Flow</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #101322;
+      color: #eef2ff;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      color: #f4a8c4;
+    }
+    p {
+      color: #bac4d8;
+      line-height: 1.5;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(150px, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .card {
+      border: 1px solid #30466f;
+      background: #16213e;
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 120px;
+    }
+    .card strong {
+      display: block;
+      color: #f4a8c4;
+      margin-bottom: 8px;
+    }
+    .arrow {
+      text-align: center;
+      color: #f4a8c4;
+      font-size: 24px;
+      padding: 10px;
+    }
+    .lane {
+      margin-top: 28px;
+      border: 1px solid #30466f;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .lane h2 {
+      margin: 0;
+      padding: 12px 16px;
+      background: #0f3460;
+      color: #f4a8c4;
+      font-size: 18px;
+    }
+    .lane ul {
+      margin: 0;
+      padding: 16px 32px;
+      color: #dbe4f4;
+      line-height: 1.7;
+    }
+    @media (max-width: 900px) {
+      .flow {
+        grid-template-columns: 1fr;
+      }
+      .arrow {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Functional Consultant Resource Matcher</h1>
+    <p>
+      The MVP connects a Streamlit chat surface to a FastAPI backend over
+      Server-Sent Events. LangGraph orchestrates the workflow, while Excel,
+      Tavily, OpenRouter, and semantic matching provide the lightweight data
+      and AI layer.
+    </p>
+
+    <section class="flow" aria-label="Process flow">
+      <div class="card">
+        <strong>1. Streamlit Chat</strong>
+        User submits a project or product problem statement.
+      </div>
+      <div class="card">
+        <strong>2. FastAPI SSE</strong>
+        UI calls <code>/v1/pipeline/stream</code> and receives progress events.
+      </div>
+      <div class="card">
+        <strong>3. LangGraph</strong>
+        Loads resources, searches context, computes strength, and scores fit.
+      </div>
+      <div class="card">
+        <strong>4. Task Matrix</strong>
+        Maps each workstream to primary/support resources.
+      </div>
+      <div class="card">
+        <strong>5. PM Report</strong>
+        Generates a downloadable task-based staffing report.
+      </div>
+    </section>
+
+    <div class="arrow">Streamlit -> FastAPI -> LangGraph -> Report -> Streamlit</div>
+
+    <section class="lane">
+      <h2>Frontend to Backend</h2>
+      <ul>
+        <li>Streamlit renders chat bubbles, status updates, and download button.</li>
+        <li>HttpClient consumes SSE progress, step, complete, and error events.</li>
+        <li>Console logs mirror UI progress for debugging and traceability.</li>
+      </ul>
+    </section>
+
+    <section class="lane">
+      <h2>Backend Pipeline</h2>
+      <ul>
+        <li>Excel stores users, skills, levels, and user-skill mappings.</li>
+        <li>Tavily and OpenRouter enrich the problem statement in live mode.</li>
+        <li>Semantic matching computes skill strength and task-level fit.</li>
+        <li>python-docx creates the final Product Manager report.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

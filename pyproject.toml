@@ -1,0 +1,27 @@
+[project]
+name = "product-manager-mvp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "asyncio>=4.0.0",
+    "einops>=0.8.1",
+    "fastapi>=0.136.3",
+    "httpx>=0.28.1",
+    "langgraph>=1.2.2",
+    "nest-asyncio>=1.6.0",
+    "openai>=2.40.0",
+    "openpyxl>=3.1.5",
+    "pandas>=3.0.3",
+    "pydantic>=2.13.4",
+    "pytest>=9.0.3",
+    "pytest-asyncio>=1.4.0",
+    "python-docx>=1.2.0",
+    "python-dotenv>=1.2.2",
+    "sentence-transformers>=5.5.1",
+    "streamlit>=1.58.0",
+    "tavily-python>=0.7.25",
+    "uvicorn>=0.48.0",
+    "xlrd>=2.0.2",
+]
